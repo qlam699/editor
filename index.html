@@ -10,6 +10,11 @@
             menubar: 'file edit view insert format tools table help',
             toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample',
             toolbar_sticky: true,
+            setup: function (editor) {
+                editor.on('init', function (e) {
+                    editor.execCommand('mceFullScreen');
+                });
+            },
             autosave_ask_before_unload: true,
             autosave_interval: "30s",
             autosave_prefix: "{path}{query}-{id}-",
@@ -63,7 +68,7 @@
 </head>
 
 <body>
-    <h3>QLAM EDITOR</h3>
+    <h3>QLAM EDITOR ...</h3>
     <form method="post">
         <textarea id="qlam-editor">Hello, Cham Anh!</textarea>
     </form>
