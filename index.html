@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="tinymce.min.js"></script>
     <script type="text/javascript">
         tinymce.init({
             selector: 'textarea#qlam-editor',
-            plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+            plugins: 'print preview importcss searchreplace autolink directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists wordcount textpattern noneditable help charmap quickbars emoticons',
             imagetools_cors_hosts: ['picsum.photos'],
             menubar: 'file edit view insert format tools table help',
-            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample',
+            toolbar: 'undo redo | fontselect fontsizeselect formatselect bold italic underline strikethrough | forecolor backcolor removeformat | charmap emoticons fullscreen preview print | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | insertfile image media template link anchor codesample',
             toolbar_sticky: true,
+            setup: function (editor) {
+                editor.on('init', function (e) {
+                    editor.execCommand('mceFullScreen');
+                });
+            },
             autosave_ask_before_unload: true,
             autosave_interval: "30s",
             autosave_prefix: "{path}{query}-{id}-",
@@ -52,7 +58,6 @@
             ],
             template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
             template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-            height: 520,
             image_caption: true,
             quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
             noneditable_noneditable_class: "mceNonEditable",
@@ -60,10 +65,15 @@
             contextmenu: "link image imagetools table",
         });
     </script>
+    <style>
+        .tox-notifications-container {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <h3>QLAM EDITOR</h3>
+    <h3>QLAM EDITOR...</h3>
     <form method="post">
         <textarea id="qlam-editor">Hello, Cham Anh!</textarea>
     </form>
